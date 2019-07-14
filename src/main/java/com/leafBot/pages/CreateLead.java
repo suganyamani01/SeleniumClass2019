@@ -6,10 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
 
 import com.leafBot.testng.api.base.Annotations;
 
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 public class CreateLead extends Annotations{
 
@@ -27,20 +29,21 @@ public class CreateLead extends Annotations{
 	@FindBy(how=How.CLASS_NAME, using = "smallSubmit")
 	WebElement eleSubmitbtn;
 	@Given ("Type Company Name")
-	public CreateLead TypeCompanyName() {
-		clearAndType(eleCompanyName, "CTS");
+	public CreateLead TypeCompanyName(String cname) {
+		clearAndType(eleCompanyName, cname);
 		return this;
 	}
-	@Given ("Type Company Name")
-	public CreateLead TypeFirstName() {
-		clearAndType(eleFirstName, "Suganya");
+	@Given ("Type First Name")
+	public CreateLead TypeFirstName(String fname) {
+		clearAndType(eleFirstName, fname);
 		return this;
 	}
-	@Given ("Type Company Name")
-	public CreateLead TypeLastName() {
-		clearAndType(eleLastName, "Mani");
+	@Given ("Type Last Name")
+	public CreateLead TypeLastName(String lname) {
+		clearAndType(eleLastName, lname);
 		return this;
 	}
+	@When ("I click on create Lead button")
 	public ViewLead clickSubmitBtn() {
 		click(eleSubmitbtn);
 		return new ViewLead();
